@@ -25,7 +25,7 @@ def check_status_inform_client(request):
     validate the request is from Twilio 
     """
 
-    validator = RequestValidator(TWILIO_AUTH_TOKEN)
+    validator = RequestValidator(os.environ.get('TWILIO_AUTH_TOKEN'))
     request_valid = validator.validate(
             request.url,
             request.form,
