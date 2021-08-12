@@ -4,6 +4,7 @@
 
 # Architecture
 
+![GCP Integration](GCP_Twilio_Integration.jpeg)
 
 
 # Deployment guideline
