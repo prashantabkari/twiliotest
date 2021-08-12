@@ -6,8 +6,6 @@ import os
 
 TWILIO_ACCOUNT_SID = "ACf28cd3f43ae5fa4e839a67dd6e082b81"
 TWILIO_AUTH_TOKEN = "87cf762127861bbddece4e0dc64874ac"
-#TWILIO_NUMBER = "+16109917613"
-#TO_NUMBER = "+61470316797"
 
 
 def inform_client(message_status):
