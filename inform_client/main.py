@@ -4,14 +4,12 @@ from twilio.rest import Client
 from twilio.request_validator import RequestValidator
 import os
 
-TWILIO_ACCOUNT_SID = "ACf28cd3f43ae5fa4e839a67dd6e082b81"
-TWILIO_AUTH_TOKEN = "87cf762127861bbddece4e0dc64874ac"
 
 
 def inform_client(message_status):
-    theBody = "Emergency Work Order Received by Delivery Partner"
+    theBody = "Service Delivery Partner Acknowledges receipt of Emergency Work Order "
 
-    client = twilio.rest.Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    client = twilio.rest.Client(os.environ.get('TWILIO_ACCOUNT_SID'),os.environ.get('TWILIO_AUTH_TOKEN'))
     rv = client.messages.create(
         to=os.environ.get('CLIENT_NUMBER'),
         from_=os.environ.get('TWILIO_NUMBER'),
