@@ -8,8 +8,6 @@ from google.cloud import storage
 
 TWILIO_ACCOUNT_SID = "ACf28cd3f43ae5fa4e839a67dd6e082b81"
 TWILIO_AUTH_TOKEN = "87cf762127861bbddece4e0dc64874ac"
-TWILIO_NUMBER = "+16109917613"
-TO_NUMBERS = ['+61470316797']
 
 
 def isEmergencyWO(bucket_name, wo_filename):
@@ -35,13 +33,12 @@ def isEmergencyWO(bucket_name, wo_filename):
 def sendTwilioMessage():
     theBody = "Hello from Twilio - 13thnd time"
     client = twilio.rest.Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-    for TO_NUMBER in TO_NUMBERS:
-        rv = client.messages.create(
-            to=TO_NUMBER,
-            from_=TWILIO_NUMBER,
-            body=theBody,
-            status_callback='https://australia-southeast1-optusso.cloudfunctions.net/process_twilio_event'
-        )
+    rv = client.messages.create(
+         to=os.environ.get('AGENT_NUMBER'),,
+         from_=os.environ.get('TWILIO_NUMBER'),
+         body=theBody,
+         status_callback='https://australia-southeast1-optusso.cloudfunctions.net/process_twilio_event'
+    )
     return str(rv)
 
 
